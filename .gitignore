@@ -1,0 +1,7 @@
+**/logs
+**/__pycache__
+**/*log
+**/*LOG*
+**/*.pid
+i3/.config/i3/.i3-quiet.json
+neovim/.config/nvim/plugged

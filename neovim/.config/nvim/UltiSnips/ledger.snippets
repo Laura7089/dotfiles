@@ -1,0 +1,19 @@
+snippet simple "simple transaction"
+${0:`date +%Y/%m/%d`} * ${1:description}
+    ${2:dest_account}        £${3:5}
+    ${4:Assets:Card Cash}
+endsnippet
+
+snippet house "house-based transaction"
+${0:`date +%Y/%m/%d`} * ${1:description}
+    ${4:Expenses:Domestic}          (£${2:5} / 3)
+    Liabilities:Owed Friends:Sam	(£$2 / 3)
+    Liabilities:Owed Friends:Zac    (£$2 / 3)
+    ${3:Assets:Card Cash}
+endsnippet
+
+snippet dayticket "first bus student dayrider"
+${0:`date +%Y/%m/%d`} * Bus Dayticket
+    Expenses:Travel:Bus    £3.20
+    ${2:Assets:Card Cash}
+endsnippet

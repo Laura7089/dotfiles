@@ -1,0 +1,191 @@
+[colors]
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+
+[bar/top]
+width = 100%
+height = 40
+
+/* monitor = ${env:MONITOR:eDP1} */
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+fixed-center = true
+
+font-0 = Ubuntu Mono Nerd Font:pixelsize=15:weight=bold;0
+
+modules-left = i3
+modules-center = date
+modules-right = wireless-network memory temperature pulseaudio backlight battery
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[module/info-hackspeed]
+type = custom/script
+
+exec = ~/.config/polybar/scripts/info-hackspeed.sh
+tail = true
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-scroll = false
+
+format = <label-state>
+format-padding-right = 2
+
+label-unfocused-foreground = ${colors.primary}
+label-unfocused-padding = 1
+
+label-focused-foreground = ${colors.foreground}
+label-focused-padding = 1
+
+label-urgent-foreground = #e4b226
+label-urgent-padding = 1
+
+
+[module/cpu]
+type = internal/cpu
+
+interval = 1
+
+format = <label>
+format-padding = 2
+
+label =  %percentage%%
+
+
+[module/memory]
+type = internal/memory
+
+interval = 1
+
+format = <label>
+format-padding = 2
+
+label =  %gb_used%
+
+
+[module/temperature]
+type = internal/temperature
+
+interval = 1
+
+thermal-zone = 6
+
+warn-temperature = 80
+
+format = <ramp> <label>
+format-padding = 2
+
+format-warn = <ramp> <label-warn>
+format-warn-padding = 2
+
+label = %temperature%
+
+label-warn = %temperature%
+label-warn-foreground = #e4b226
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+
+[module/date]
+type = internal/date
+
+interval = 1
+
+date = %a %b %d,
+time = %H:%M:%S
+
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+
+format = <label>
+format-padding = 2
+
+label =  %date% %time%
+
+
+[module/battery]
+type = internal/battery
+
+full-at = 100
+
+battery = BAT0
+adapter = AC
+
+poll-interval = 5
+
+format-charging = <animation-charging> <label-charging>
+format-charging-padding = 2
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-padding = 2
+
+format-full = <ramp-capacity> <label-full>
+format-full-padding = 2
+
+label-charging = %percentage%%
+
+label-discharging = %percentage%%
+
+label-full = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 500
+
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+
+format = <label>
+format-padding = 2
+
+label =  %percentage%%
+
+[module/wireless-network]
+type = internal/network
+
+interface = wlp6s0
+
+format-connected = <label-connected>
+format-connected-padding = 2
+
+format-disconnected = <label-disconnected>
+format-disconnected-padding = 2
+
+label-connected =  %essid%
+
+label-disconnected =  None
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume = 墳 %percentage%%
+format-volume-padding = 1
+
+label-muted = 婢 Muted
+format-muted-padding = 1

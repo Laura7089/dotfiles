@@ -1,0 +1,177 @@
+###############
+# Keybindings #
+###############
+# Set modifier to windows key
+set $mod Mod4
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# %%win+g: for toggling gaps' presence %%
+bindsym $mod+g exec --no-startup-id "if [ `i3-msg -t get_tree | grep -Po \
+    '.*\\"gaps\\":{\\"inner\\":\K(-|)[0-9]+(?=.*\\"focused\\":true)'` -eq 0 ]; then \
+        i3-msg gaps inner current set 0; \
+	i3-msg gaps outer current set 0; \
+    else \
+        i3-msg gaps inner current set 20; \
+	i3-msg gaps outer current set 35; \
+    fi"
+# %%win+enter: start a terminal %%
+bindsym $mod+Return exec "GTK_THEME=Numix termite"
+# %%win+Q: kill focused window %%
+bindsym $mod+Shift+q kill
+# %%printscr: take a screenshot (duh) %%
+bindsym Print exec "flameshot gui"
+# %%win+d: start dmenu %%
+bindsym $mod+d exec --no-startup-id GTK_THEME=Numix rofi -show run
+# %%win+s: start dmenu ssh, currently broken %%
+bindsym $mod+s exec --no-startup-id rofi -show ssh
+# %%win+h: focus left %%
+bindsym $mod+h focus left
+# %%win+j: focus down %%
+bindsym $mod+j focus down
+# %%win+k: focus up %%
+bindsym $mod+k focus up
+# %%win+l: focus right %%
+bindsym $mod+l focus right
+# %%win+H: move left %%
+bindsym $mod+Shift+h move left
+# %%win+J: move down %%
+bindsym $mod+Shift+j move down
+# %%win+K: move up %%
+bindsym $mod+Shift+k move up
+# %%win+L: move right %%
+bindsym $mod+Shift+l move right
+# %%win+b: split horizontally %%
+bindsym $mod+b split v
+# %%win+v: split vertically %%
+bindsym $mod+v split h
+# %%win+f: fullscreen window%%
+bindsym $mod+f fullscreen toggle
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
+# %%win+shift+space: toggle floating %%
+bindsym $mod+Shift+space floating toggle
+# %%win+space: toggle floating focus %%
+bindsym $mod+space focus mode_toggle
+# %%win+a: focus parent %%
+bindsym $mod+a focus parent
+# %%win+z: focus child %%
+bindsym $mod+z focus child
+# lock the screen
+bindsym $mod+p exec /home/laura/.local/bin/i3lock-colour
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+# %%win+C: reload i3 config %%
+bindsym $mod+Shift+c reload
+# %%win+R: restart i3 %%
+bindsym $mod+Shift+r restart
+# mute volume
+bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl list sinks short | head -1 | cut -f 1) toggle"
+# adjust volume
+bindsym XF86AudioLowerVolume exec "pactl set-sink-mute $(pactl list sinks short | head -1 | cut -f 1) false; pactl set-sink-volume $(pactl list sinks short | head -1 | cut -f 1) -5%"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute $(pactl list sinks short | head -1 | cut -f 1) false; pactl set-sink-volume $(pactl list sinks short | head -1 | cut -f 1) +5%"
+# Mute the mic
+bindsym XF86AudioMicMute exec "pactl set-source-mute $(pactl list sources short | grep -v monitor | head -1 | cut -f 1) toggle"
+# Brightness
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym h resize shrink width 10 px
+        bindsym k resize grow height 10 px
+        bindsym j resize shrink height 10 px
+        bindsym l resize grow width 10 px
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+# %%win+r: resize mode%%
+bindsym $mod+r mode "resize"
+# %%win+B: random wallpaper and colour scheme%%
+bindsym $mod+Shift+b exec --no-startup-id $HOME/.local/bin/wal-choice
+# %%win+e: select emoticon and copy to clipboard
+bindsym $mod+e exec --no-startup-id $HOME/.local/bin/selectEmoticon
+
+
+##############
+# Appearance #
+##############
+# Gaps
+gaps outer 35
+gaps inner 20
+# Set colors from Xresources
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+# class                 border  backgr. text indicator child_border
+client.focused          $fg     $bg     $fg  $bg       $fg
+client.focused_inactive $fg     $bg     $fg  $bg       $fg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
+#Remove window borders and title bars
+default_border none
+hide_edge_borders smart
+# Add a small border to the focused window
+for_window [class="^.*"] border pixel 3
+
+###########
+# Backend #
+###########
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+# Force tiled for various
+for_window [class="Nextcloud" instance="nextcloud"] floating disable
+# Force floating for various
+for_window [class="flameshot" instance="flameshot"] floating enable
+
+###########
+# Startup #
+###########
+# Start picom
+exec_always --no-startup-id picom -b
+# Restore wal colourscheme
+exec_always --no-startup-id $HOME/.local/bin/wal-rand
+#Launch polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# Launch unclutter to hide the mouse when not being moved
+exec_always --no-startup-id unclutter
+# # Launch conky
+# exec_always --no-startup-id conky -d
+# Start lock handler and set timeout to 2 mins(?)
+exec_always --no-startup-id xset s 120
+exec_always --no-startup-id xss-lock $HOME/.local/bin/i3lock-colour
+exec_always --no-startup-id echo $XDG_SESSION_ID > /tmp/locksessionid

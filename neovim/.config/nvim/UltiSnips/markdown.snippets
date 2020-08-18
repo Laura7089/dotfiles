@@ -1,0 +1,69 @@
+# Begin a lecture notes file
+snippet header-lecture "The headers for a lecture note file" b
+---
+title: "${1:<Lecture Name>} Notes"
+author: "Laura Demkowicz-Duffy"
+geometry: margin=3cm
+...
+
+# ${0:Big Title Here}
+
+\\pagebreak
+endsnippet
+
+# A section to appear unique to denote side information in lectures; requires a newline afterwards
+snippet note "Side information in lectures" b
+> **Note:** *${1:Note goes here}*
+
+endsnippet
+
+# A longer version of the above note with bullet points
+# Could probably use being extensible
+snippet longnote "Bulleted side information in lectures" b
+> **Note:${0:}**
+> - *${1:First note}*
+> - *${2:Second note}*
+
+endsnippet
+
+# Generate centred lines of maths expressions aligned at the "&" character
+snippet aligned "Aligned math mode" b
+\$\$\\begin{aligned}
+	${1:1 + 1 & = 2} \\\\
+	${2:1 \\times 1 & = 1}
+\\end{aligned}\$\$
+endsnippet
+
+# Generate multipart function definitions, aligned at the "&" character
+snippet funcdef "Math with array" b
+f(x) = \\begin{cases}
+	${1:n} & ${2:x \\ge 0} \\\\
+	${3:n + 1} & ${4:\\text{otherwise}}
+\\end{cases}
+endsnippet
+
+# The set of natural numbers
+snippet natural "The set of natural numbers"
+\\mathbb{N}
+endsnippet
+
+# The permutations over the language alphabet, sigma-star
+snippet alpha "Permutations over alphabet"
+\\Sigma^*
+endsnippet
+
+snippet problem "A problem specification for COCO" b
+- *Input*: ${1:input text}
+- *Question*: ${2:question text}
+endsnippet
+
+snippet logic "A logic note for IMPL"
+\\text{${1:logic name}}
+\\frac{
+	${2:judgement 1}
+	\\mid
+	${3:judgement 2}
+}
+{${4:resultant judgement}}
+[\\text{${5:side conditions}}]
+endsnippet

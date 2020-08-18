@@ -1,0 +1,17 @@
+[user]
+	email = laura@laurademkowiczduffy.co.uk
+	name = Laura Demkowicz-Duffy
+	signingkey = laura@laurademkowiczduffy.co.uk
+
+[url "https://aur.archlinux.org/"]
+	insteadOf = aur://
+[url "https://github.com/"]
+	insteadOf = gh://
+[url "https://gitlab.com/"]
+	insteadOf = gl://
+; [commit]
+; 	gpgsign = true
+[core]
+	excludesfile = /home/laura/.config/git/ignore
+[credential]
+	helper = store
