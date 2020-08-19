@@ -1,6 +1,9 @@
 # Laura7089's Dotfiles
 
-A repo containing my most relevant dotfiles for easy sharing.
+My most relevant dotfiles organised for use with GNU stow.
+
+To use, clone the repo, then run `stow <tool name>` for each tool whose dotfiles you want to use.
+You might need to move/backup your existing dotfiles for some tools.
 
 Thanks to:
 - [u/felixsanz](https://www.reddit.com/r/unixporn/comments/69008j/i3gaps_1984/) for base polybar and rofi
