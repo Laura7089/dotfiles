@@ -12,6 +12,6 @@
 ; [commit]
 ; 	gpgsign = true
 [core]
-	excludesfile = /home/laura/.config/git/ignore
+	excludesfile = ~/.config/git/ignore
 [credential]
 	helper = store
