@@ -1,6 +1,7 @@
 "###########
 "# Plugins #
 "###########
+
 call plug#begin()
     Plug 'vim-airline/vim-airline' "Better/prettier status bar
     Plug 'vim-airline/vim-airline-themes'

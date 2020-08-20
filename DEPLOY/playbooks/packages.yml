@@ -1,0 +1,29 @@
+---
+# vim: set ft=yaml.ansible:
+
+- hosts: all
+  become: yes
+  gather_facts: no
+
+  vars_files:
+    - "../vars.yml"
+
+  tasks:
+    - name: "Install packages"
+      apt:
+        update_cache: yes
+        name:
+          - git
+          - neovim
+          - stow
+          - exuberant-ctags
+          - libssl-dev
+          - pkg-config
+          - zsh
+          - zsh-autosuggestions
+          - zsh-syntax-highlighting
+          - build-essential
+          - python3-pip
+          - curl
+          - gcc
+      when: install_dependencies

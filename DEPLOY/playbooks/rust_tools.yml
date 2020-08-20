@@ -1,0 +1,11 @@
+---
+# vim: set ft=yaml.ansible:
+
+- name: "setup rust core tools replacements"
+  hosts: all
+
+  vars_files:
+    - "../vars.yml"
+
+  roles:
+    - fubarhouse.rust

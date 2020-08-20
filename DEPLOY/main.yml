@@ -1,0 +1,30 @@
+---
+# vim: set ft=yaml.ansible:
+
+- import_playbook: "playbooks/packages.yml"
+
+- name: "setup dotfiles"
+  hosts: all
+  gather_facts: no
+
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: "clone dotfiles"
+      git:
+        repo: "https://github.com/Laura7089/dotfiles.git"
+        dest: "~/{{ dotfiles_home_subdir }}"
+        version: master
+
+    - name: "stow applications"
+      command:
+        chdir: "~/{{ dotfiles_home_subdir }}"
+        cmd: "stow -v2 {{ item }}"
+      register: stow_result
+      changed_when: '"LINK" in stow_result.stdout'
+      with_items: "{{ stow_applications }}"
+
+- import_playbook: "playbooks/zsh.yml"
+- import_playbook: "playbooks/neovim.yml"
+- import_playbook: "playbooks/rust_tools.yml"

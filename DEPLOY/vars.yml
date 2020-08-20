@@ -1,0 +1,21 @@
+---
+# vim: set filetype=yaml.ansible:
+
+- dotfiles_home_subdir: ".dotfiles"
+- omz_dir: "~/.oh-my-zsh"
+- stow_applications:
+  - zsh
+  - neovim
+  - git
+- cargo_items:
+  - name: bat
+  - name: du-dust
+  - name: exa
+  - name: fd-find
+  - name: procs
+  - name: starship
+  - name: nomino
+  - name: hyperfine
+  - name: tokei
+  - name: ripgrep
+- install_dependencies: yes
