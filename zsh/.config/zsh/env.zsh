@@ -1,7 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR='nvim'
 export ARCHFLAGS="-arch x86_64"
-export ZSH_THEME="gallois"
 export RTV_EDITOR="nvim"
 export RTV_BROWSER=$BROWSER
 export RTV_URLVIEWER="urlview"

@@ -15,11 +15,14 @@ plugins=(
     "pip"
     "python"
     "sudo"
+    "sysadmin-util"
     "systemd"
     "taskwarrior"
     "urltools"
     "vi-mode"
     "wd"
+    "zsh-autosuggestions"
+    "zsh-syntax-highlighting"
 )
 # Source the env variables
 source $HOME/.config/zsh/env.zsh
@@ -28,9 +31,6 @@ if [[ $(hostname) == $LAPTOP_HOSTNAME ]]; then
     plugins+=(
         "compleat-fixed"
         "you-should-use"
-        "sysadmin-util"
-        "zsh-autosuggestions"
-        "zsh-syntax-highlighting"
         "history-substring-search"
         "archlinux"
         "tmux"
