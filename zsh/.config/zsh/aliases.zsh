@@ -1,4 +1,6 @@
 # General
+alias ls="exa --color=always"
+alias tree="exa --tree"
 alias h="history"
 alias zshrc="$EDITOR ~/.zshrc"
 alias vim=nvim

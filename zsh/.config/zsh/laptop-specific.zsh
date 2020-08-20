@@ -1,6 +1,4 @@
 # Aliases
-alias ls='exa --color=always'
-alias loremIpsum="cat ~/misc/loremIpsum.txt"
 alias mountPhone="jmtpfs /mnt/phone"
 alias ping="prettyping"
 eval $(thefuck --alias)
