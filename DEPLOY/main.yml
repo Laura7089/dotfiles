@@ -22,7 +22,7 @@
         chdir: "~/{{ dotfiles_home_subdir }}"
         cmd: "stow -v2 {{ item }}"
       register: stow_result
-      changed_when: '"LINK" in stow_result.stdout'
+      changed_when: '"LINK" in stow_result.stderr'
       with_items: "{{ stow_applications }}"
 
 - import_playbook: "playbooks/zsh.yml"
