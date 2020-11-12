@@ -1,5 +1,7 @@
 # Laura7089's Dotfiles
 
+[Moved here](https://git.edjoduf.co.uk/laura/dotfiles)
+
 My most relevant dotfiles organised for use with GNU stow.
 
 To use, clone the repo, then run `stow <tool name>` for each tool whose dotfiles you want to use.
